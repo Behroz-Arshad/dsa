@@ -111,6 +111,21 @@ class DoubleLinkList:
             current_node.next.previous = current_node
         print("Node has been deleted")
 
+    # Delete complete double link list
+    def delete_all_dll(self):
+        ''' We have to update all the previous refrences of nodes to null
+        so it will collect garbage '''
+        if self.head is None:
+            print("Empty double link list")
+        else:
+            node = self.head
+            while node:
+                node.previous = None
+                node = node.next
+            self.head = None
+            self.tail = None
+            print("deleted")
+
 
 
 
@@ -127,8 +142,10 @@ dll.insert(12,0)
 dll.insert(11,0)
 dll.insert(32,1)
 print([node.value for node in dll])
+
 dll.delete(1)
 print([node.value for node in dll])
 # dll.traverDll()
 # dll.reversetraverDll()
 # dll.search(32)
+# dll.delete_all_dll()
