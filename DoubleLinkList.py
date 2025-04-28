@@ -86,6 +86,35 @@ class DoubleLinkList:
                 break
             node = node.next
 
+    # Delete node from double link list
+
+    def delete(self, location):
+        if self.head is None:
+            print("Empty")
+        elif location == 0:
+            self.head = self.head.next
+            self.head.previous = None
+        elif location == 1:
+            if self.head == self.tail:
+                self.head = None
+                self.tail = None
+            else:
+                self.tail = self.tail.previous
+                self.tail.next = None
+        else:
+            current_node = self.head
+            index = 0
+            while index < location -1 :
+                current_node = current_node.next
+                index += 1
+            current_node.next = current_node.next.next
+            current_node.next.previous = current_node
+        print("Node has been deleted")
+
+
+
+
+
 
 
 
@@ -98,6 +127,8 @@ dll.insert(12,0)
 dll.insert(11,0)
 dll.insert(32,1)
 print([node.value for node in dll])
-dll.traverDll()
-dll.reversetraverDll()
-dll.search(32)
+dll.delete(1)
+print([node.value for node in dll])
+# dll.traverDll()
+# dll.reversetraverDll()
+# dll.search(32)
