@@ -275,6 +275,16 @@ class DoubleLinkList:
             tempnode.next.previous = tempnode
 
 
+    def delete_full_dll(self):
+        node = self.head
+        while node:
+            if node.previous:
+                node.previous = None
+            node=node.next
+        self.head=None
+        self.tail=None
+
+
 
 DLL = DoubleLinkList()
 DLL.createDLL(4)
@@ -286,6 +296,8 @@ DLL.insert_dll(1,9)
 
 print(DLL.traverse_dll())
 DLL.delete_dll(3)
+print(DLL.traverse_dll())
+DLL.delete_full_dll()
 print(DLL.traverse_dll())
 
 print(DLL.reverse_traverse_dll())
